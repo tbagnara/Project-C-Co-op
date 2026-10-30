@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip backgroundMusic;
     public AudioClip levelMusic;
     public AudioClip jumpSound;
-    public AudioClip walkSound;
+    //public AudioClip walkSound;
     public AudioClip spikesSound;
     public AudioClip goalSound;
 
@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        MusicVolume = 0.1f;
+        MusicVolume = 0.5f;
         SFXVolume = 1;
     }
 
@@ -54,11 +54,7 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip);
     }
 
-    public void PlayWalkingSoundEffect()
-    {
-        if (sfxSource.isPlaying) return;
-        sfxSource.PlayOneShot(walkSound);
-    }
+    
 
     
 

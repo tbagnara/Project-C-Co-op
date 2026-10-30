@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W) && IsGrounded)
             {
                 rb.linearVelocityY = jumpHeight; 
-                //AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);  
+                AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);  
             }
         }
         else if (playerNumber == 2) 
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded)
             {
                 rb.linearVelocityY = jumpHeight; 
-                //AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);  
+                AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);  
             }
         }
     }
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
         switch( collision.gameObject.tag.ToString() )
         {
             case "Spikes":
-                //AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.spikesSound);
+                AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.spikesSound);
                 //onLevelFail?.Invoke();  
                 break;
 
