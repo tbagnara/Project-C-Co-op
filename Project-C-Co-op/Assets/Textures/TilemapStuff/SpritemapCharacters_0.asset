@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Spritemap_5
+  m_Name: SpritemapCharacters_0
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: -1988502060, guid: ddb51e7e812a8c5409ddabfada50dfc6, type: 3}
+  m_Sprite: {fileID: -6282345273404422920, guid: 2847342f7b85bb843a8d53651435071c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

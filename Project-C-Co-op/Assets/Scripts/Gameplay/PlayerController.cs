@@ -45,9 +45,6 @@ public class PlayerController : MonoBehaviour
     }
     
 
-
-    
-
     void Move() // Directional Movement
     {
         //if (GameManager.Instance.IsGameOver() ) return;
@@ -145,24 +142,49 @@ public class PlayerController : MonoBehaviour
                 //onLevelFail?.Invoke();  
                 break;
 
-            case "Goal":
-                //onLevelComplete?.Invoke(SceneManager.GetActiveScene().name );
+            case "Exit":
+                if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("exits_0") && playerNumber == 1)
+                {
+                    GameManager.Instance.EnteredExit();
+                }
+                else if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("exits_1") && playerNumber == 2)
+                {
+                    GameManager.Instance.EnteredExit();
+                }
+                break;
+            
+            case "Key":
+                if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("KEYS_0") && playerNumber == 1) 
+                {
+
+                    Destroy( collision.gameObject );
+                    GameManager.Instance.GrabbedAKey();
+                }
+                else if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("KEYS_1") && playerNumber == 2)
+                {
+                    Destroy( collision.gameObject );
+                    GameManager.Instance.GrabbedAKey();
+                }
                 break;
         }
         
     }
-
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Goal")
-        {
-            
-        }
+        if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("exits_0") && playerNumber == 1)
+                {
+                    GameManager.Instance.LeftExit();
+                }
+                else if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("exits_1") && playerNumber == 2)
+                {
+                    GameManager.Instance.LeftExit();
+                }
     }
 
     public int GetPlayerNumber()
     {
         return playerNumber;
     }
+
 
 }
