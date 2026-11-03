@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 5f; 
     private float jumpHeight = 6;
     private Rigidbody2D rb;
-    //private SpriteRenderer sp;
+    private SpriteRenderer sp;
     private CharacterController controller;
     public ContactFilter2D ContactFilterDown;
     public ContactFilter2D ContactFilterLeft;
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody2D>();    
-        //sp = GetComponent<SpriteRenderer>();
+        sp = GetComponent<SpriteRenderer>();
         Time.timeScale = 1;    
     }
 
@@ -89,11 +89,17 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocityX = moveInput * moveSpeed;
             if (moveInput < 0)
             {
-                //sp.sprite = facingLeft;
+                if (sp.flipX == false)
+                {
+                    sp.flipX = true;
+                }
             }
             else
             {
-                //sp.sprite = facingRight;
+                if (sp.flipX == true)
+                {
+                    sp.flipX = false;
+                }
             }
             if (IsGrounded)
             {
