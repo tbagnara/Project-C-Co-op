@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
 
     void Move() // Directional Movement
     {
-        //if (GameManager.Instance.IsGameOver() ) return;
         if (Time.timeScale == 0) return;
         float moveInput = 0;
         if (playerNumber == 1) 
@@ -119,7 +118,6 @@ public class PlayerController : MonoBehaviour
 
     void Jump() // Vertical Movement
     {
-        //if (GameManager.Instance.IsGameOver() ) return;
         if (Time.timeScale == 0) return;
         if (playerNumber == 1) 
         {
@@ -143,9 +141,9 @@ public class PlayerController : MonoBehaviour
     {
         switch( collision.gameObject.tag.ToString() )
         {
-            case "Spikes":
+            case "Damaging":
                 AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.spikesSound);
-                //onLevelFail?.Invoke();  
+                onLevelFail?.Invoke();  
                 break;
 
             case "Exit":
@@ -177,14 +175,17 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("exits_0") && playerNumber == 1)
-                {
-                    GameManager.Instance.LeftExit();
-                }
-                else if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("exits_1") && playerNumber == 2)
-                {
-                    GameManager.Instance.LeftExit();
-                }
+        if (collision.gameObject.GetComponent<SpriteRenderer>() != null)
+        {
+            if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("exits_0") && playerNumber == 1)
+            {
+                GameManager.Instance.LeftExit();
+            }
+            else if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("exits_1") && playerNumber == 2)
+            {
+                GameManager.Instance.LeftExit();
+            }
+        }
     }
 
     public int GetPlayerNumber()
