@@ -10,7 +10,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     private float moveSpeed = 5f; 
-    private float jumpHeight = 6;
+    private float jumpHeight = 5f;
     private Rigidbody2D rb;
     private SpriteRenderer sp;
     private CharacterController controller;
