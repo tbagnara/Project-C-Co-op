@@ -10,8 +10,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int levelNumber;    
     [SerializeField] private Canvas pauseMenu;
     [SerializeField] private TextMeshProUGUI pauseMenuText;
+    [SerializeField] private TextMeshProUGUI levelNumberText;
+    [SerializeField] private TextMeshProUGUI keysRemainingText;
 
-    private int numberOfKeysLeft;
+    private int keysRemaining;
     private int playersAtExit;
 
     void Awake()
@@ -35,7 +37,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         AudioManager.Instance.PlayMusic(AudioManager.Instance.levelMusic);
-        numberOfKeysLeft = GameObject.FindGameObjectsWithTag("Key").Length;
+        keysRemaining = GameObject.FindGameObjectsWithTag("Key").Length;
+        levelNumberText.text = ""+levelNumber;
+        keysRemainingText.text = ""+keysRemaining;
     }
     void Update()
     {
@@ -46,7 +50,8 @@ public class GameManager : MonoBehaviour
 
     public void GrabbedAKey()
     {
-        numberOfKeysLeft -= 1;
+        keysRemaining -= 1;
+        keysRemainingText.text = ""+keysRemaining;
     }
 
     public void EnteredExit()
@@ -61,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     void IsLevelBeaten()
     {
-        if (playersAtExit == 2 && numberOfKeysLeft == 0 && Time.timeScale != 0)
+        if (playersAtExit == 2 && keysRemaining == 0 && Time.timeScale != 0)
         {
             Time.timeScale = 0;
             AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.goalSound);
