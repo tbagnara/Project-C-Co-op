@@ -179,8 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1de1999f68d8043b97150bb8e33ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
-  endPostion: {fileID: 27363111346204625}
+  endPostionTransform: {fileID: 27363111346204625}
   speed: 5
+  repeating: 0
 --- !u!1 &2302309462174009001
 GameObject:
   m_ObjectHideFlags: 0
