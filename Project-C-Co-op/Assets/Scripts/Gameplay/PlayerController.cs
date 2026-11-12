@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.timeScale == 0) return;
         float moveInput = 0;
-        if (playerNumber == 1) 
+        if (playerNumber == 1) // Player 1 movement keys
         {
             
             if (Input.GetKey(KeyCode.A))
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
                 rb.linearVelocityX = 0;
             }
         }
-        else if (playerNumber == 2) 
+        else if (playerNumber == 2) // Player two movement keys
         {
             
             if (Input.GetKey(KeyCode.LeftArrow))
@@ -137,16 +137,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)  // Spikes - death, Goal - win
+    void OnTriggerEnter2D(Collider2D collision)  
     {
         switch( collision.gameObject.tag.ToString() )
         {
-            case "Damaging":
+            case "Damaging":    // Spikes or poison -> death
                 AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.spikesSound);
                 onLevelFail?.Invoke();  
                 break;
 
-            case "Exit":
+            case "Exit":        // Exit -> tells game manager
                 if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("exits_0") && playerNumber == 1)
                 {
                     GameManager.Instance.EnteredExit();
@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
             
-            case "Key":
+            case "Key":     // Key collected -> tells game manager
                 if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("KEYS_0") && playerNumber == 1) 
                 {
 
@@ -177,11 +177,11 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<SpriteRenderer>() != null)
         {
-            if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("exits_0") && playerNumber == 1)
+            if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("exits_0") && playerNumber == 1) // Red exit adn dog
             {
                 GameManager.Instance.LeftExit();
             }
-            else if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("exits_1") && playerNumber == 2)
+            else if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("exits_1") && playerNumber == 2)    // Blue exit and cat
             {
                 GameManager.Instance.LeftExit();
             }

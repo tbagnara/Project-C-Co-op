@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         AudioManager.Instance.PlayMusic(AudioManager.Instance.levelMusic);
-        keysRemaining = GameObject.FindGameObjectsWithTag("Key").Length;
+        keysRemaining = GameObject.FindGameObjectsWithTag("Key").Length;    // Gets the number of keys needed to be collected
         levelNumberText.text = ""+levelNumber;
         keysRemainingText.text = ""+keysRemaining;
     }
@@ -45,8 +45,6 @@ public class GameManager : MonoBehaviour
     {
         PauseInput();
     }
-
-
 
     public void GrabbedAKey()
     {
@@ -66,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     void IsLevelBeaten()
     {
-        if (playersAtExit == 2 && keysRemaining == 0 && Time.timeScale != 0)
+        if (playersAtExit == 2 && keysRemaining == 0 && Time.timeScale != 0) // Both players are at the exits, all keys collected, and game isnt paused or over
         {
             Time.timeScale = 0;
             AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.goalSound);

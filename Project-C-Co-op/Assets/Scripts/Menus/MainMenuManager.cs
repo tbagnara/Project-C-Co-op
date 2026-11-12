@@ -9,9 +9,4 @@ public class MainMenuManager : MonoBehaviour
         AudioManager.Instance.PlayMusic(AudioManager.Instance.backgroundMusic);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

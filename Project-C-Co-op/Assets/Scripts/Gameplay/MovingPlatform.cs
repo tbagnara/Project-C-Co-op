@@ -26,14 +26,14 @@ public class MovingPlatform : MonoBehaviour
     void FixedUpdate()
     {
         if (endPostionTransform == null) return;
-        if (repeating == false)
+        if (repeating == false) // A platform that goes directly to the target and stops
         {
             switch ( position )
             {
-                case 1:
+                case 1: // Moving towards end position
                     targetPos = endPosition;
                     break;
-                default:
+                default:    // Moving towards start position
                     targetPos = startPosition;
                     break;
 
@@ -42,14 +42,14 @@ public class MovingPlatform : MonoBehaviour
             Vector3 newPos = Vector3.MoveTowards(currentPos, targetPos, speed * Time.fixedDeltaTime);
             rb.MovePosition(newPos);
         }
-        else
+        else // Platforms move back and forth repeatedly
         {
             if (movingActive == true)
             {
                 Vector3 currentPos = rb.position;
                 Vector3 newPos = Vector3.MoveTowards(currentPos, targetPos, speed * Time.fixedDeltaTime);
                 rb.MovePosition(newPos);
-                if (rb.transform.position == targetPos)
+                if (rb.transform.position == targetPos) // Is time to swap target
                 {
                     if (targetPos == startPosition)
                     {
@@ -63,11 +63,11 @@ public class MovingPlatform : MonoBehaviour
             }
         }
     }
-    public void SwitchPosition(int pos)
+    public void SwitchPosition(int pos) // Change position
     {
         position = pos;
     }
-    public void OnOff()
+    public void OnOff() // Switch between on and off states
     {
         if (movingActive == false) movingActive = true;
         else movingActive = false;

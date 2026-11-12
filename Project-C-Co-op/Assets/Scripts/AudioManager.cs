@@ -9,7 +9,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip backgroundMusic;
     public AudioClip levelMusic;
     public AudioClip jumpSound;
-    //public AudioClip walkSound;
     public AudioClip spikesSound;
     public AudioClip goalSound;
 
@@ -36,13 +35,13 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
+    void Start()    
     {
         MusicVolume = 0.5f;
         SFXVolume = 1;
     }
 
-    public void PlayMusic(AudioClip clip)
+    public void PlayMusic(AudioClip clip) // Stops whatever is being played and plays something a new music clip on repeat
     {
         musicSource.Stop();
         musicSource.clip = clip;

@@ -32,7 +32,7 @@ public class ButtonScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
 
-        switch ( buttonColor ) // Function changes based on color of cube
+        switch ( buttonColor ) // Function changes based on color of cube. Red can only be used by the dog, blue by the cat, purple by both
         {
             case "Red":
                 if (collision.gameObject.GetComponent<SpriteRenderer>().sprite.name.Equals("SpritemapCharacters_0") || 
