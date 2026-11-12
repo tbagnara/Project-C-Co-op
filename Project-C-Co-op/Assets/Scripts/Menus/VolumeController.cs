@@ -22,7 +22,7 @@ public class VolumeController : MonoBehaviour
         }
         else // The only other option is SFX so defaults to it
         {
-            AudioManager.Instance.MusicVolume = SfxSlider.value;
+            AudioManager.Instance.SFXVolume = SfxSlider.value;
         }
     }
 }
